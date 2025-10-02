@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkadymrx8bavw"]
+
+[ext_resource type="Script" uid="uid://dkey8vrcq05a7" path="res://Bullet.gd" id="1_pr8nj"]
+[ext_resource type="Texture2D" uid="uid://cvqgwqv6x5a00" path="res://addons/kenney_particle_pack/trace_07.png" id="2_x7t80"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xklmv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tvvjf"]
+properties/0/path = NodePath("Visual_X:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Visual_Y:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="RigidBody3D"]
+top_level = true
+collision_layer = 2
+gravity_scale = 0.0
+script = ExtResource("1_pr8nj")
+
+[node name="Visual_X" type="Sprite3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0, 0)
+layers = 2
+modulate = Color(1, 1, 0.376471, 1)
+texture = ExtResource("2_x7t80")
+
+[node name="Visual_Y" type="Sprite3D" parent="."]
+transform = Transform3D(5.73206e-17, 1.31134e-09, 0.03, 0.03, -1.31134e-09, 0, 1.31134e-09, 0.03, -1.31134e-09, 0, 0, 0)
+layers = 2
+modulate = Color(1, 1, 0.376471, 1)
+texture = ExtResource("2_x7t80")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, -8.74228e-10, -0.02, 0, 0.02, -8.74228e-10, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_xklmv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_tvvjf")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.301, 0, 0, 0, -4.37114e-09, 0.4, 0, -0.1, -1.74846e-08, 0, 0, -0.02)
+collision_mask = 2

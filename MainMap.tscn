@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://der0ouk6o0sy5"]
+
+[ext_resource type="Script" uid="uid://din2b76wjj7fn" path="res://Main.gd" id="1_02y4s"]
+[ext_resource type="PackedScene" uid="uid://cq1mc4q1b8r58" path="res://map.blend" id="2_be8ok"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tu4cw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_s2jnh"]
+sky_material = SubResource("ProceduralSkyMaterial_tu4cw")
+
+[sub_resource type="Environment" id="Environment_3o07m"]
+background_mode = 2
+sky = SubResource("Sky_s2jnh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06jna"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edkod"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_02y4s")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3o07m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="map" parent="." instance=ExtResource("2_be8ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.985159, 0, -0.911471)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 117.0
+offset_top = 289.0
+offset_right = -109.0
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host
+"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="EnterPort" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+placeholder_text = "Enter Port"
+alignment = 1
+
+[node name="EnterAddress" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Address"
+alignment = 1
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 132.0
+offset_top = 67.0
+offset_right = -124.0
+offset_bottom = -1058.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 132.0
+offset_top = -536.0
+offset_right = -124.0
+offset_bottom = -509.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_06jna")
+theme_override_styles/fill = SubResource("StyleBoxFlat_edkod")
+max_value = 5.0
+value = 5.0
+
+[node name="Address" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 67.0
+offset_right = 524.0
+offset_bottom = 94.0
+text = "Address"
+horizontal_alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://x14g6cqwih8t")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="renamed" from="CanvasLayer/HUD/Address" to="." method="_on_address_renamed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
