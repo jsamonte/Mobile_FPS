@@ -42,7 +42,7 @@ func _on_join_button_pressed():
 	enet_peer.create_client(LOCAL_HOST, LOCAL_PORT)
 	#enet_peer.create_client(INTERNET_HOST, PORT)
 	#enet_peer.create_client(LOCAL_HOST, port.text.to_int())
-	#enet_peer.create_client(address.text, PORT)
+	#enet_peer.create_client(address.text, LOCAL_PORT)
 	current_address.text = "Address: "  + address.text
 	multiplayer.multiplayer_peer = enet_peer
 	

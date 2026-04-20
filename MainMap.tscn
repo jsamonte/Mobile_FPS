@@ -82,6 +82,7 @@ placeholder_text = "Enter Port"
 alignment = 1
 
 [node name="EnterAddress" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=250331557]
+visible = false
 layout_mode = 2
 placeholder_text = "Enter Address"
 alignment = 1
@@ -126,6 +127,7 @@ max_value = 5.0
 value = 5.0
 
 [node name="Address" type="Label" parent="CanvasLayer/HUD" unique_id=1266705022]
+visible = false
 layout_mode = 0
 offset_left = 132.0
 offset_top = 67.0
