@@ -27,7 +27,7 @@ func _process(_delta):
 func _on_host_button_pressed():
 	main_menu.hide()
 	hud.show()
-	enet_peer.create_server(PORT)
+	enet_peer.create_server(LOCAL_PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
@@ -39,8 +39,8 @@ func _on_host_button_pressed():
 func _on_join_button_pressed():
 	main_menu.hide()
 	hud.show()
-	#enet_peer.create_client(LOCAL_HOST, PORT)
-	enet_peer.create_client(INTERNET_HOST, PORT)
+	enet_peer.create_client(LOCAL_HOST, LOCAL_PORT)
+	#enet_peer.create_client(INTERNET_HOST, PORT)
 	#enet_peer.create_client(LOCAL_HOST, port.text.to_int())
 	#enet_peer.create_client(address.text, PORT)
 	current_address.text = "Address: "  + address.text
@@ -62,6 +62,7 @@ func remove_player(peer_id):
 	
 func update_health_bar(health_value):
 	health_bar.value = health_value
+	
 	
 
 

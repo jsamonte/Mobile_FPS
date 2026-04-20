@@ -1,6 +1,6 @@
 {
 	"asset":{
-		"generator":"Khronos glTF Blender I/O v4.2.60",
+		"generator":"Khronos glTF Blender I/O v5.1.18",
 		"version":"2.0"
 	},
 	"extensionsUsed":[
@@ -11,23 +11,7 @@
 	"scenes":[
 		{
 			"extras":{
-				"coat3D":{},
-				"blosm":{
-					"defaultLevels":[
-						{
-							"levels":4,
-							"weight":10
-						},
-						{
-							"levels":5,
-							"weight":40
-						},
-						{
-							"levels":6,
-							"weight":10
-						}
-					]
-				}
+				"coat3D":{}
 			},
 			"name":"Scene",
 			"nodes":[

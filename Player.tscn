@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://x14g6cqwih8t"]
+[gd_scene format=3 uid="uid://x14g6cqwih8t"]
 
 [ext_resource type="Script" uid="uid://dkjq01t3e47f6" path="res://Player.gd" id="1_r6hog"]
 [ext_resource type="PackedScene" uid="uid://8jirrh0xjhw1" path="res://pistol_model.fbx" id="2_1784r"]
@@ -213,30 +213,30 @@ properties/4/path = NodePath("Neck/Camera3D/pistol_model:position")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=1171604115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449586, -0.753775, 0.315452)
 collision_layer = 2
 script = ExtResource("1_r6hog")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1067911761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.961042, 0)
 mesh = SubResource("CapsuleMesh_wtnmy")
 surface_material_override/0 = SubResource("StandardMaterial3D_3oaog")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2089368672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.961042, 0)
 shape = SubResource("ConvexPolygonShape3D_1ihln")
 
-[node name="Neck" type="Node3D" parent="."]
+[node name="Neck" type="Node3D" parent="." unique_id=1486236093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58147, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Neck"]
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=1074966030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.331367, 0)
 
-[node name="pistol_model" parent="Neck/Camera3D" instance=ExtResource("2_1784r")]
-transform = Transform3D(3.44683, 0.0950762, 0.600286, 0, 3.45691, -0.547522, -0.607769, 0.539204, 3.40439, 0.21, -0.0207164, -0.8)
+[node name="pistol_model" parent="Neck/Camera3D" unique_id=1123179470 instance=ExtResource("2_1784r")]
+transform = Transform3D(3.4468298, 0.09507624, 0.6002862, 0, 3.45691, -0.54752177, -0.60776937, 0.5392039, 3.4043903, 0.21, -0.0207164, -0.8)
 
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Neck/Camera3D/pistol_model"]
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Neck/Camera3D/pistol_model" unique_id=1314126777]
 transform = Transform3D(0.999997, -1.86265e-08, -1.49012e-07, -2.23517e-08, 0.999996, -1.78814e-07, 1.49012e-07, 4.47035e-08, 0.999996, 0.002, 0.023, -0.06)
 emitting = false
 amount = 1
@@ -245,7 +245,7 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_8xt5q")
 draw_pass_1 = SubResource("PlaneMesh_fhjae")
 
-[node name="TextureRect" type="TextureRect" parent="Neck/Camera3D"]
+[node name="TextureRect" type="TextureRect" parent="Neck/Camera3D" unique_id=1674587909]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -257,54 +257,54 @@ pivot_offset = Vector2(324, 0)
 texture = ExtResource("4_tx6fl")
 stretch_mode = 3
 
-[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D" unique_id=677596376]
 transform = Transform3D(0.999999, 0, 0, 0, -0.999999, 8.74227e-08, 0, -8.74227e-08, -0.999999, -0.014, -0.005, -0.578237)
 target_position = Vector3(0, 0, 50)
 collision_mask = 2
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1060480185]
 
-[node name="LeftJoyStick" type="Area2D" parent="UI"]
+[node name="LeftJoyStick" type="Area2D" parent="UI" unique_id=177568002]
 position = Vector2(80, 460)
 rotation = 0.0347554
 script = ExtResource("4_8msow")
 
-[node name="BigCircle" type="Sprite2D" parent="UI/LeftJoyStick"]
+[node name="BigCircle" type="Sprite2D" parent="UI/LeftJoyStick" unique_id=1339405810]
 position = Vector2(124, 528)
 texture = ExtResource("5_uyjv0")
 
-[node name="SmallCircle" type="Sprite2D" parent="UI/LeftJoyStick/BigCircle"]
+[node name="SmallCircle" type="Sprite2D" parent="UI/LeftJoyStick/BigCircle" unique_id=408043171]
 position = Vector2(5.62915, 5.82739)
 scale = Vector2(0.372987, 0.389022)
 texture = ExtResource("5_uyjv0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/LeftJoyStick"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/LeftJoyStick" unique_id=2090643069]
 position = Vector2(129, 533)
 shape = SubResource("CircleShape2D_ph3bx")
 one_way_collision_margin = 10.8
 
-[node name="RightJoyStick" type="Area2D" parent="UI"]
+[node name="RightJoyStick" type="Area2D" parent="UI" unique_id=1192109591]
 position = Vector2(-603, 486)
 rotation = -0.0275253
 script = ExtResource("6_g7lhh")
 
-[node name="BigCircle" type="Sprite2D" parent="UI/RightJoyStick"]
+[node name="BigCircle" type="Sprite2D" parent="UI/RightJoyStick" unique_id=1175228476]
 position = Vector2(1037, 535.027)
 texture = ExtResource("5_uyjv0")
 
-[node name="SmallCircle" type="Sprite2D" parent="UI/RightJoyStick/BigCircle"]
+[node name="SmallCircle" type="Sprite2D" parent="UI/RightJoyStick/BigCircle" unique_id=2065294225]
 position = Vector2(6.823, -0.637329)
 rotation = -6.28319
 scale = Vector2(0.38463, 0.387452)
 texture = ExtResource("5_uyjv0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/RightJoyStick"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/RightJoyStick" unique_id=1784232857]
 position = Vector2(1034.59, 537.678)
 rotation = -0.959606
 shape = SubResource("CircleShape2D_ph3bx")
 one_way_collision_margin = 10.8
 
-[node name="ShootButton" type="TouchScreenButton" parent="UI"]
+[node name="ShootButton" type="TouchScreenButton" parent="UI" unique_id=2090331306]
 position = Vector2(160, 705)
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("5_uyjv0")
@@ -312,13 +312,13 @@ shape = SubResource("CircleShape2D_l6g3f")
 passby_press = true
 action = "shoot"
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/ShootButton"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/ShootButton" unique_id=548223968]
 position = Vector2(128, 128)
 rotation = 0.349066
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("7_77p3d")
 
-[node name="JumpButton" type="TouchScreenButton" parent="UI"]
+[node name="JumpButton" type="TouchScreenButton" parent="UI" unique_id=1168399773]
 position = Vector2(325, 705)
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("5_uyjv0")
@@ -326,12 +326,12 @@ shape = SubResource("CircleShape2D_mu1b7")
 passby_press = true
 action = "jump"
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/JumpButton"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/JumpButton" unique_id=1765287812]
 position = Vector2(137.143, 117.143)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_mwjcg")
 
-[node name="AimButton" type="TouchScreenButton" parent="UI"]
+[node name="AimButton" type="TouchScreenButton" parent="UI" unique_id=1708271421]
 position = Vector2(484, 769)
 scale = Vector2(0.665781, 0.665781)
 texture_normal = ExtResource("5_uyjv0")
@@ -339,12 +339,12 @@ shape = SubResource("CircleShape2D_mu1b7")
 passby_press = true
 action = "aim"
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/AimButton"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/AimButton" unique_id=1668482998]
 position = Vector2(129.172, 124.666)
 scale = Vector2(0.353257, 0.315159)
 texture = ExtResource("10_76tf6")
 
-[node name="SteadyButton" type="TouchScreenButton" parent="UI"]
+[node name="SteadyButton" type="TouchScreenButton" parent="UI" unique_id=1278778293]
 position = Vector2(0, 769)
 scale = Vector2(0.665781, 0.665781)
 texture_normal = ExtResource("5_uyjv0")
@@ -352,21 +352,19 @@ shape = SubResource("CircleShape2D_mu1b7")
 passby_press = true
 action = "steady"
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/SteadyButton"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/SteadyButton" unique_id=1844618044]
 position = Vector2(132.176, 127.67)
 scale = Vector2(0.653368, 0.713448)
 texture = ExtResource("11_20jjm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wqc7s")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=381167795]
+libraries/ = SubResource("AnimationLibrary_wqc7s")
 playback_default_blend_time = 0.25
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1141368754]
 replication_config = SubResource("SceneReplicationConfig_eg7q5")
 
-[node name="FloorCheck" type="RayCast3D" parent="."]
+[node name="FloorCheck" type="RayCast3D" parent="." unique_id=1800741424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0622827, 0)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
